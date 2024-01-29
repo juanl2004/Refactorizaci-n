@@ -1,11 +1,13 @@
-package refactor;
+package notas;
 
 import java.util.Scanner;
 
 public class Ejercicio2 {
+	public static final int NOTA_MAXIMA = 10;
+
 	public static void main(String[] args) {
 		// Variable para guardar el nombre del alumno
-		String alumno;
+		String nombreAlumno;
 
 		// Variables para guardar los distintos tipos de notas
 		int notaPractica, notaProblemas, notaTeoria;
@@ -22,7 +24,7 @@ public class Ejercicio2 {
 		int opcion;
 
 		// Variables para la nota máxima, mínima y media
-		double max = 0, min = 10, media = 0;
+		double max = 0, min = NOTA_MAXIMA, media = 0;
 
 		// Variable que cuenta los alumnos
 		int contador = 0;
@@ -32,33 +34,33 @@ public class Ejercicio2 {
 
 		while (true) {
 			System.out.println("Introduzca el nombre del alumno");
-			alumno = leer.next();
+			nombreAlumno = leer.next();
 
-			if (alumno.equals("0")) {
+			if (nombreAlumno.equals("0")) {
 				break;
 			}
 
 			System.out.println("Introduzca la nota de la práctica");
 			notaPractica = leer.nextInt();
-			if (notaPractica < 0 || notaPractica > 10) {
+			if (notaPractica < 0 || notaPractica > NOTA_MAXIMA) {
 				System.out.println("ERROR: alguna de las notas introducidas no es correcta");
 				continue;
 			}
 			System.out.println("Introduzca la nota de problemas");
 			notaProblemas = leer.nextInt();
-			if (notaProblemas < 0 || notaProblemas > 10) {
+			if (notaProblemas < 0 || notaProblemas > NOTA_MAXIMA) {
 				System.out.println("ERROR: alguna de las notas introducidas no es correcta");
 				continue;
 			}
 			System.out.println("Introduzca la nota de teoría");
 			notaTeoria = leer.nextInt();
-			if (notaTeoria < 0 || notaTeoria > 10) {
+			if (notaTeoria < 0 || notaTeoria > NOTA_MAXIMA) {
 				System.out.println("ERROR: alguna de las notas introducidas no es correcta");
 				continue;
 			}
 			notaFinal = notaPractica * PORCENTAJE_PRACTICA + notaProblemas * PORCENTAJE_PROBLEMAS
 					+ notaTeoria * PORCENTAJE_TEORIA;
-			System.out.println("La nota final de " + alumno + " es " + notaFinal);
+			System.out.println("La nota final de " + nombreAlumno + " es " + notaFinal);
 
 			if (notaFinal > max) {
 				max = notaFinal;
