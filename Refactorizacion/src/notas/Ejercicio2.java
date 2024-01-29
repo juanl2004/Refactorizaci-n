@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 public class Ejercicio2 {
 	public static final int NOTA_MAXIMA = 10;
+	private static double max = 0;
+	private static double min = NOTA_MAXIMA;
+	private static double media = 0;
 
 	public static void main(String[] args) {
 		// Variable para guardar el nombre del alumno
@@ -22,9 +25,6 @@ public class Ejercicio2 {
 
 		// Opción para el menú
 		int opcion;
-
-		// Variables para la nota máxima, mínima y media
-		double max = 0, min = NOTA_MAXIMA, media = 0;
 
 		// Variable que cuenta los alumnos
 		int contador = 0;
@@ -58,8 +58,11 @@ public class Ejercicio2 {
 				System.out.println("ERROR: alguna de las notas introducidas no es correcta");
 				continue;
 			}
-			notaFinal = notaPractica * PORCENTAJE_PRACTICA + notaProblemas * PORCENTAJE_PROBLEMAS
-					+ notaTeoria * PORCENTAJE_TEORIA;
+			double mediaPractica = notaPractica * PORCENTAJE_PRACTICA;
+			double mediaProblemas = notaProblemas * PORCENTAJE_PROBLEMAS;
+			double mediaTeoria = notaTeoria * PORCENTAJE_TEORIA;
+			notaFinal = mediaPractica + mediaProblemas
+					+ mediaTeoria;
 			System.out.println("La nota final de " + nombreAlumno + " es " + notaFinal);
 
 			if (notaFinal > max) {
@@ -76,6 +79,16 @@ public class Ejercicio2 {
 
 		media = media / contador;
 
+		menu(leer);
+
+		leer.close();
+	} // fin main
+
+	/**
+	 * @param leer
+	 */
+	public static void menu(Scanner leer) {
+		int opcion;
 		System.out.println("Seleccione una opción");
 		System.out.println("1. Nota máxima");
 		System.out.println("2. Nota mínima");
@@ -95,8 +108,6 @@ public class Ejercicio2 {
 		default:
 			System.out.println("La opción introducida no es válida");
 		}
-
-		leer.close();
-	} // fin main
+	}
 
 } // fin clase
